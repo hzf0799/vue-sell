@@ -2,7 +2,7 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper" ref="menuwrapper">
-        <ul height="100" v-if="goods" >
+        <ul>
           <li class="menu-item" v-for="(item,index) in goods" :key ="index" :class="{'current':currentIndex === index}" @click="selectMenu(index,$event)">
             <span class="text border-1px"></span>
             <span v-show="item.type > 0" class="icon" :class="classMap[item.type]"></span>
@@ -11,11 +11,11 @@
         </ul>
       </div>
       <div class="foods-wrapper" ref="foodswrapper">
-        <ul height="100">
-          <li v-for="good in goods" :key="good.id" class="food-list food-list-hook" height="40">
+        <ul>
+          <li v-for="good in goods" :key="good.id" class="food-list food-list-hook" >
             <h1 class="title">{{good.name}}</h1>
             <ul  height="100">
-              <li v-for="food in good.foods" @click="selectFood(food,$event)" :key="food" class="food-item border-1px" height="30">
+              <li v-for="food in good.foods" @click="selectFood(food,$event)" :key="food" class="food-item border-1px" >
                 <div class="icon">
                   <img :src="food.icon" width="57" height="57">
                 </div>
@@ -165,21 +165,21 @@
 <style lang="stylus" rel="stylesheet/stylus" >
   @import "../../common/stylus/mixin.styl";
   .goods
-    display :flex;
-    position :absolute;
-    width :100%;
-    top: 174px;
-    overflow :hidden;
+    display: flex
+    position: absolute
+    top: 174px
+    bottom: 46px
+    width: 100%
+    overflow: hidden
     .menu-wrapper
-      flex:0 0 80px;
-      width : 80px;
+      flex:0 0 90px;
+      width : 90px;
       background :#2b343c;
-      height:75vh;
       color : #fff;
       .menu-item
         height :54px;
-        width :56px;
-        line-height :14px;
+        width :66px;
+        line-height :18px;
         display :table;
         padding : 0 12px;
         &.current
@@ -212,62 +212,61 @@
         .text
           display :table-row;
           font-size: 14px;
-          width :56px;
-          vertical-align :middle;
+          width :66px;
           border-1px:(rgba(7,17,27,0.1));
     .foods-wrapper
       flex:1;
-      height:75vh;
-      .food-list
-        .title
-          padding-left :14px;
-          height:26px;
-          font-size :12px;
-          line-height :26px;
-          color :rgb(147,153,159);
-          background :#f3f5f7;
-          border-left :2px solid #d9dde1;
-        .food-item
-          display :flex;
-          margin :18px;
-          padding-bottom :18px;
-          border-1px:(rgba(7,17,27,0.1));
-          &:last-child{
-            border-none:();
-            margin-bottom :0;
-          }
-          .icon
-            flex:0 0 57px;
-          .content
-            margin-left :10px;
-            flex:1;
-            .name
-              margin :2px 0 8px 0;
-              font-size :14px;
-              color :rgb(7,17,27);
-              line-height :14px;
-            .desc,.extra
-              margin-bottom :8px;
-              font-size :10px;
-              color :rgb(147,153,159);
-              line-height :14px;
-            .desc
-              margin-bottom :8px;
-            .extra
-              .count
-                margin-right :12px;
-            .price
-              font-weight :700;
-              .new
-                margin-right :8px;
+      ul
+        .food-list
+          .title
+            padding-left :14px;
+            height:26px;
+            font-size :12px;
+            line-height :26px;
+            color :rgb(147,153,159);
+            background :#f3f5f7;
+            border-left :2px solid #d9dde1;
+          .food-item
+            display :flex;
+            margin :18px;
+            padding-bottom :18px;
+            border-1px:(rgba(7,17,27,0.1));
+            &:last-child{
+              border-none:();
+              margin-bottom :0;
+            }
+            .icon
+              flex:0 0 57px;
+            .content
+              margin-left :10px;
+              flex:1;
+              .name
+                margin :2px 0 8px 0;
                 font-size :14px;
-                color :rgb(240,20,20);
-              .old
-                text-decoration :line-through;
+                color :rgb(7,17,27);
+                line-height :14px;
+              .desc,.extra
+                margin-bottom :8px;
                 font-size :10px;
                 color :rgb(147,153,159);
-            .cartcontrol-wrapper
-              position :absolute;
-              right :0;
-              bottom : 12px;
+                line-height :14px;
+              .desc
+                margin-bottom :8px;
+              .extra
+                .count
+                  margin-right :12px;
+              .price
+                font-weight :700;
+                .new
+                  margin-right :8px;
+                  font-size :14px;
+                  color :rgb(240,20,20);
+                .old
+                  text-decoration :line-through;
+                  font-size :10px;
+                  color :rgb(147,153,159);
+              .cartcontrol-wrapper
+                position :absolute;
+                right :0;
+                bottom : 12px;
 </style>
